@@ -7,7 +7,6 @@ import { Toaster } from '@/components/ui/sonner'
 import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
 import { fontSans, fontUrban } from '@/config/fonts'
-import { EdgeStoreProvider } from '@/lib/edgestore'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { Poppins } from "next/font/google";
@@ -79,13 +78,11 @@ export default async function RootLayout({
       <body className={poppins.className + " bg-bg min-h-dvh flex flex-col"}>
         <SessionProvider session={session}>
           <Toaster />
-          <EdgeStoreProvider>
             <Header />
             <div className="grid flex-1 pt-16">
               {children}
             </div>
             <Footer />
-          </EdgeStoreProvider>
         </SessionProvider>
       </body>
     </html>
