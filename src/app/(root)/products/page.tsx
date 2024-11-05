@@ -22,7 +22,7 @@ export default function Page(): JSX.Element {
       setProductData(() => products)
     }
     getAllProducts();
-  }, [productData])
+  }, [])
 
   const addToSessionCart = async (productId: string) => {
     addToCart(productId);
