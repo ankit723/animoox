@@ -7,8 +7,9 @@ import { useSearchParams } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
+import { GoogleIcon } from "../icons/google-icon";
 
-export const Social = () => {
+export const Social = ({title}) => {
     const searchParams = useSearchParams();
     const callbackUrl = searchParams.get("callbackUrl");
 
@@ -22,19 +23,11 @@ export const Social = () => {
         <div className="flex items-center w-full gap-x-2">
             <Button
                 size="lg"
-                className="w-full"
+                className="w-full bg-black flex space-x-4 hover:bg-zinc-700 py-6"
                 variant="outline"
                 onClick={() => onClick("google")}
             >
-                <FcGoogle className="h-5 w-5" />
-            </Button>
-            <Button
-                size="lg"
-                className="w-full"
-                variant="outline"
-                onClick={() => onClick("github")}
-            >
-                <FaGithub className="h-5 w-5" />
+                <GoogleIcon width={24} height={24} /> <span className="text-lg font-bold text-white">{title}</span>
             </Button>
         </div>
     );

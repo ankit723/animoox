@@ -20,8 +20,10 @@ import { Button } from "@/components/ui/button";
 import { FormError } from "@/components/form-error";
 import { FormSuccess } from "@/components/form-success";
 import { register } from "@/actions/register";
+import { Social } from "./social";
+import Link from "next/link";
 
-export const RegisterForm = () => {
+export const SignUpForm = () => {
     const [error, setError] = useState<string | undefined>("");
     const [success, setSuccess] = useState<string | undefined>("");
     const [isPending, startTransition] = useTransition();
@@ -38,6 +40,7 @@ export const RegisterForm = () => {
     const onSubmit = (values: z.infer<typeof RegisterSchema>) => {
         setError("");
         setSuccess("");
+        console.log(values)
 
         startTransition(() => {
             register(values)
@@ -49,32 +52,28 @@ export const RegisterForm = () => {
     };
 
     return (
-        <CardWrapper
-            headerLabel="Create an account"
-            backButtonLabel="Already have an account?"
-            backButtonHref="/auth/login"
-            showSocial
-        >
             <Form {...form}>
                 <form
                     onSubmit={form.handleSubmit(onSubmit)}
-                    className="space-y-6"
+                    className="bg-white rounded-[20px] p-12 space-y-9 text-center"
                 >
-                    <div className="space-y-4">
+                    <h3 className="text-3xl font-medium">Create new account</h3>
+                    <div className="space-y-9">
                         <FormField
                             control={form.control}
                             name="name"
                             render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Name</FormLabel>
+                                <FormItem className="relative">
+                                    <FormLabel  className=" bg-white text-neutral-500 text-md absolute left-4 -top-3 px-1"> Full Name</FormLabel>
                                     <FormControl>
                                         <Input
                                             {...field}
                                             disabled={isPending}
                                             placeholder="John Doe"
+                                            className="w-full px-4 py-7 placeholder-neutral-300 rounded-md focus:outline-brand border-2 text-lg font-medium  border-brand text-brand"
                                         />
                                     </FormControl>
-                                    <FormMessage />
+                                    <FormMessage className="w-full text-left" />
                                 </FormItem>
                             )}
                         />
@@ -82,17 +81,18 @@ export const RegisterForm = () => {
                             control={form.control}
                             name="email"
                             render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Email</FormLabel>
+                                <FormItem className="relative">
+                                    <FormLabel  className=" bg-white text-neutral-500 text-md absolute left-4 -top-3 px-1">Email</FormLabel>
                                     <FormControl>
                                         <Input
                                             {...field}
                                             disabled={isPending}
                                             placeholder="john.doe@example.com"
                                             type="email"
+                                            className="w-full px-4 py-7 placeholder-neutral-300 rounded-md focus:outline-brand border-2 text-lg font-medium  border-brand text-brand"
                                         />
                                     </FormControl>
-                                    <FormMessage />
+                                    <FormMessage className="w-full text-left" />
                                 </FormItem>
                             )}
                         />
@@ -100,17 +100,18 @@ export const RegisterForm = () => {
                             control={form.control}
                             name="password"
                             render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Password</FormLabel>
+                                <FormItem className="relative">
+                                    <FormLabel  className=" bg-white text-neutral-500 text-md absolute left-4 -top-3 px-1">Password</FormLabel>
                                     <FormControl>
                                         <Input
                                             {...field}
                                             disabled={isPending}
-                                            placeholder="******"
+                                            placeholder="password"
                                             type="password"
+                                            className="w-full px-4 py-7 placeholder-neutral-300 rounded-md focus:outline-brand border-2 text-lg font-medium  border-brand text-brand"
                                         />
                                     </FormControl>
-                                    <FormMessage />
+                                    <FormMessage className="w-full text-left" />
                                 </FormItem>
                             )}
                         />
@@ -120,12 +121,18 @@ export const RegisterForm = () => {
                     <Button
                         disabled={isPending}
                         type="submit"
-                        className="w-full"
+                        className="w-full bg-brand text-lg py-6 font-bold hover:bg-blue-800"
                     >
-                        Create an account
+                        Sign up
                     </Button>
+                    <Social title={"Sign up with Google"} />
+                    <p className=" text-neutral-500 font-medium">
+                        Already have an account?{" "}
+                        <Link className="text-brand" href="/auth/login">
+                        Log in
+                        </Link>
+                    </p>
                 </form>
             </Form>
-        </CardWrapper>
     );
 };

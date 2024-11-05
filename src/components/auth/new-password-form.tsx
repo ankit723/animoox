@@ -21,6 +21,7 @@ import { Button } from "@/components/ui/button";
 import { FormError } from "@/components/form-error";
 import { FormSuccess } from "@/components/form-success";
 import { newPassword } from "@/actions/new-password";
+import Link from "next/link";
 
 export const NewPasswordForm = () => {
     const searchParams = useSearchParams();
@@ -51,32 +52,29 @@ export const NewPasswordForm = () => {
     };
 
     return (
-        <CardWrapper
-            headerLabel="Enter a new password"
-            backButtonLabel="Back to login"
-            backButtonHref="/auth/login"
-        >
             <Form {...form}>
                 <form
                     onSubmit={form.handleSubmit(onSubmit)}
-                    className="space-y-6"
+                    className="bg-white rounded-[20px] p-12 space-y-9 text-center"
                 >
-                    <div className="space-y-4">
+                    <h3 className="text-3xl font-medium">Enter a new password</h3>
+                    <div className="space-y-9">
                         <FormField
                             control={form.control}
                             name="password"
                             render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Password</FormLabel>
+                                <FormItem className="relative">
+                                    <FormLabel   className=" bg-white text-neutral-500 text-md absolute left-4 -top-3 px-1">Password</FormLabel>
                                     <FormControl>
                                         <Input
                                             {...field}
                                             disabled={isPending}
                                             placeholder="******"
                                             type="password"
+                                            className="w-full px-4 py-7 placeholder-neutral-300 rounded-md focus:outline-brand border-2 text-lg font-medium  border-brand text-brand"
                                         />
                                     </FormControl>
-                                    <FormMessage />
+                                    <FormMessage className="w-full text-left" />
                                 </FormItem>
                             )}
                         />
@@ -86,12 +84,15 @@ export const NewPasswordForm = () => {
                     <Button
                         disabled={isPending}
                         type="submit"
-                        className="w-full"
+                        className="w-full bg-brand text-lg py-6 font-bold hover:bg-blue-800"
                     >
                         Reset password
                     </Button>
+
+                        <Link href="auth/login" className="w-full font-semibold text-neutral-500 flex justify-end">
+                        Back to login
+                        </Link>
                 </form>
             </Form>
-        </CardWrapper>
     );
 };

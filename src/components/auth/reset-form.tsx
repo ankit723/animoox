@@ -20,6 +20,7 @@ import { Button } from "@/components/ui/button";
 import { FormError } from "@/components/form-error";
 import { FormSuccess } from "@/components/form-success";
 import { reset } from "@/actions/reset";
+import Link from "next/link";
 
 export const ResetForm = () => {
     const [error, setError] = useState<string | undefined>("");
@@ -47,32 +48,29 @@ export const ResetForm = () => {
     };
 
     return (
-        <CardWrapper
-            headerLabel="Forgot your password?"
-            backButtonLabel="Back to login"
-            backButtonHref="/auth/login"
-        >
             <Form {...form}>
                 <form
                     onSubmit={form.handleSubmit(onSubmit)}
-                    className="space-y-6"
+                    className="bg-white rounded-[20px] p-12 space-y-9 text-center"
                 >
+                    <h3 className="text-3xl font-medium">Forgot your password?</h3>
                     <div className="space-y-4">
                         <FormField
                             control={form.control}
                             name="email"
                             render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Email</FormLabel>
+                                <FormItem className="relative">
+                                    <FormLabel  className=" bg-white text-neutral-500 text-md absolute left-4 -top-3 px-1">Email</FormLabel>
                                     <FormControl>
                                         <Input
                                             {...field}
                                             disabled={isPending}
                                             placeholder="john.doe@example.com"
                                             type="email"
+                                            className="w-full px-4 py-7 placeholder-neutral-300 rounded-md focus:outline-brand border-2 text-lg font-medium  border-brand text-brand"
                                         />
                                     </FormControl>
-                                    <FormMessage />
+                                    <FormMessage className="w-full text-left"/>
                                 </FormItem>
                             )}
                         />
@@ -82,12 +80,14 @@ export const ResetForm = () => {
                     <Button
                         disabled={isPending}
                         type="submit"
-                        className="w-full"
+                        className="w-full bg-brand text-lg py-6 font-bold hover:bg-blue-800"
                     >
                         Send reset email
                     </Button>
+                    <Link href="auth/login" className="w-full font-semibold text-neutral-500 flex justify-end">
+                        Back to login
+                    </Link>
                 </form>
             </Form>
-        </CardWrapper>
     );
 };
