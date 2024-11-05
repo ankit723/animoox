@@ -27,7 +27,7 @@ export const Social = ({title}) => {
                 variant="outline"
                 onClick={() => onClick("google")}
             >
-                <GoogleIcon width={24} height={24} /> <span className="text-lg font-bold text-white">{title}</span>
+                <GoogleIcon width={24} height={24} /> <span className="text-lg font-medium text-white">{title}</span>
             </Button>
         </div>
     );
