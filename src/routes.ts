@@ -9,9 +9,14 @@ export const publicRoutes = [
     "/components",
     "/products",
     "/products-preview",
+    "^/products-preview/.*",
     "/cart",
-    "/product",
-    "/cart"
+    "/api/product",
+    "/api/cart"
+];
+
+export const publicRoutePatterns = [
+    "^/products-preview/.*",  // Matches /products-preview/[productId]
 ];
 
 /**
