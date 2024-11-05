@@ -147,8 +147,8 @@ const Page = ({ params }: { params: { productId: string } }) => {
 
             <p className=' text-E text-sm'>COMPATIBILITY</p>
             <div className="flex gap-4 my-3">
-              {productData.compatibility.map((c)=>(
-                <Image src={c==='Illustrator'?Illustrate:(c==='After Effects'?Effects:Slack)} alt={c} width={30}/>
+              {productData.compatibility.map((c,i)=>(
+                <Image src={c === 'Illustrator' ? Illustrate : (c === 'After Effects' ? Effects : Slack)} alt={c} width={30} key={i} />
               ))}
             </div>
 
@@ -156,15 +156,15 @@ const Page = ({ params }: { params: { productId: string } }) => {
             
             <p className=' text-E text-sm'>Highlights: </p>
             <ul className='px-4'>
-              {productData.highlights.map((h)=>(
-                <li className='text-xs text-secondary-text my-2 list-disc'>{h}</li>
+              {productData.highlights.map((h,i)=>(
+                <li className='text-xs text-secondary-text my-2 list-disc' key={i}>{h}</li>
               ))}
             </ul>
             
             <div className="flex gap-5 my-7">
               <TipIcon />
               <div className="">
-                <p className='text-xs font-light text-secondary-text my-1'>Can't find what you're looking for?</p>
+                <p className='text-xs font-light text-secondary-text my-1'>Can&apos;t find what you&apos;re looking for?</p>
                 <p className='text-xs font-normal border-b-4 border-brand w-fit'>Reqest custom design</p>
               </div>
             </div>
