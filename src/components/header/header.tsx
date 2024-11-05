@@ -4,11 +4,18 @@ import Image from "next/image";
 import { Logo } from "@/assets/images";
 import { Button, ButtonWithLink } from "../ui";
 import { CartButton } from "../button/cart-button/cart-button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { headerList, productsSubMenu } from "./header.strings";
+import { useSession, signOut } from "next-auth/react";
+import { DribbleIcon } from "@/assets/icons";
+import { ProfileIcon } from "@/assets/icons/profile-icon";
+import Link from "next/link";
 
 export const Header = (): JSX.Element => {
+  const { data: session } = useSession();
+  console.log(session)
   const [showProductMenu, setShowProductMenu] = useState<boolean>(false);
+  const [showAuthMenu, setShowAuthMenu] = useState<boolean>(false);
 
   return (
     <header className="relative px-28 py-5 flex justify-center items-center gap-12">
@@ -34,13 +41,26 @@ export const Header = (): JSX.Element => {
               </ButtonWithLink>
             ))}
           <CartButton href="/cart" variant="ghost" />
-          <Button
-            className="!rounded-full hover:border-brand !py-2 !font-normal"
-            size="lg"
-            variant="ghost"
-          >
-            Sign in
-          </Button>
+          {session ? (
+              <Button
+                className="rounded-full py-1 px-1 pr-2 border-brand font-normal flex justify-start items-center gap-2"
+                size="lg"
+                variant="ghost"
+                onMouseEnter={()=>setShowAuthMenu(true)}
+                onMouseLeave={()=>setShowAuthMenu(false)}
+              >
+                <ProfileIcon />
+                <p className="text-brand">{session.user.name}</p>
+              </Button>
+          ) : (
+            <Button
+              className="!rounded-full hover:border-brand !py-2 !font-normal"
+              size="lg"
+              variant="ghost"
+            >
+              <Link href={"/auth/login"}>Sign in</Link>
+            </Button>
+          )}
         </span>
       </div>
       {showProductMenu ? (
@@ -65,6 +85,22 @@ export const Header = (): JSX.Element => {
               </article>
             ))}
           </div>
+        </section>
+      ) : null}
+
+      {showAuthMenu ? (
+        <section
+          className="absolute flex flex-col gap-3 py-3 bg-bg p-6 shadow-2xl right-0 border translate-y-36 -translate-x-6 tra w-fit z-20 border-brand"
+          onMouseEnter={() => setShowAuthMenu(true)}
+          onMouseLeave={() => setShowAuthMenu(false)}
+        >
+          <p className="font-extralight text-brand hover:text-brand cursor-pointer">Profile</p>
+          <p className="font-extralight text-secondary-text hover:text-brand cursor-pointer">Purchased</p>
+          <p className="font-extralight text-secondary-text hover:text-brand cursor-pointer">My Current Plan</p>
+          <p className="font-extralight text-secondary-text hover:text-brand cursor-pointer">Account Settings</p>
+          <p className="font-extralight text-secondary-text hover:text-brand cursor-pointer">Profile</p>
+          <hr />
+          <p className="font-extralight text-secondary-text hover:text-brand cursor-pointer" onClick={()=>signOut()}>Logout</p>
         </section>
       ) : null}
     </header>
