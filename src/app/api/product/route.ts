@@ -1,11 +1,10 @@
-// app/api/product/route.ts
-
+import { db } from '@/lib/db';
 import { NextResponse } from 'next/server';
 
 export async function POST(request: Request) {
   try {
     const data = await request.json();
-    const newProduct = await globalThis.prisma?.product.create({ data });
+    const newProduct = await db.product.create({ data });
     return NextResponse.json(newProduct);
   } catch (error) {
     console.error('Error creating product:', error);
@@ -20,7 +19,7 @@ export async function GET(request: Request) {
   try {
     if (productId) {
       // Fetch single product by productId
-      const product = await globalThis.prisma?.product.findUnique({ where: { productId } });
+      const product = await db.product.findUnique({ where: { productId } });
       if (!product) {
         return NextResponse.json({ error: 'Product not found' }, { status: 404 });
       }
@@ -46,7 +45,7 @@ export async function PUT(request: Request) {
 
   try {
     const data = await request.json();
-    const updatedProduct = await globalThis.prisma?.product.update({
+    const updatedProduct = await db.product.update({
       where: { productId },
       data,
     });
@@ -66,7 +65,7 @@ export async function DELETE(request: Request) {
   }
 
   try {
-    await globalThis.prisma?.product.delete({
+    await db.product.delete({
       where: { productId },
     });
     return NextResponse.json({ message: 'Product deleted successfully' });
