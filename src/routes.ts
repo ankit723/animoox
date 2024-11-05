@@ -6,7 +6,12 @@
 export const publicRoutes = [
     "/",
     "/auth/new-verification",
-    "/components"
+    "/components",
+    "/products",
+    "/products-preview",
+    "/cart",
+    "/product",
+    "/cart"
 ];
 
 /**
@@ -19,7 +24,7 @@ export const authRoutes = [
     "/auth/sign-up",
     "/auth/error",
     "/auth/reset",
-    "/auth/new-password"
+    "/auth/new-password",    
 ];
 
 /**

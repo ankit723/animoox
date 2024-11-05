@@ -3,13 +3,17 @@ import { Inter } from 'next/font/google'
 import { SessionProvider } from 'next-auth/react'
 import { auth } from '@/auth'
 import '@/styles/globals.css'
-import { Toaster } from "@/components/ui/sonner";
+import { Toaster } from '@/components/ui/sonner'
 import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
 import { fontSans, fontUrban } from '@/config/fonts'
 import { EdgeStoreProvider } from '@/lib/edgestore'
+import { Header } from '@/components/header'
+import { Footer } from '@/components/footer'
+import { Poppins } from "next/font/google";
 
 const inter = Inter({ subsets: ['latin'] })
+const poppins = Poppins({ subsets: ["latin"], weight: "500" });
 
 
 export const metadata: Metadata = {
@@ -33,8 +37,11 @@ export const metadata: Metadata = {
     {
       name: "tejas",
     },
+    {
+      name:"ankit",
+    }
   ],
-  creator: "tejas",
+  creator: "ankit",
   metadataBase: new URL(siteConfig.url),
   openGraph: {
     type: "website",
@@ -69,18 +76,15 @@ export default async function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn(
-        "min-h-screen bg-background font-sans antialiased",
-        fontSans.variable,
-        fontUrban.variable,
-        // fontHeading.variable
-      )}>
+      <body className={poppins.className + " bg-bg min-h-dvh flex flex-col"}>
         <SessionProvider session={session}>
           <Toaster />
           <EdgeStoreProvider>
-            <div className='flex min-h-screen flex-col'>
+            <Header />
+            <div className="grid flex-1 pt-16">
               {children}
             </div>
+            <Footer />
           </EdgeStoreProvider>
         </SessionProvider>
       </body>
