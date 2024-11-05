@@ -26,7 +26,7 @@ export async function GET(request: Request) {
       return NextResponse.json(product);
     } else {
       // Fetch all products
-      const products = await globalThis.prisma?.product.findMany();
+      const products = await db.product.findMany();
       return NextResponse.json(products);
     }
   } catch (error) {
