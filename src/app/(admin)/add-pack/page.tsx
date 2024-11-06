@@ -1,8 +1,8 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import PackUploadForm from "@/components/PackUploadForm"
-import HeadingInfo from "@/components/HeadingInfo"
+import PackUploadForm from "@/components/pack-upload-form"
+import HeadingInfo from "@/components/heading-info"
 import type { IPackFormData, IPackFiles } from "@/utils/types"
 import {
   validateAddProduct,

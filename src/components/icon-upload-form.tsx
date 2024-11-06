@@ -2,7 +2,7 @@
 
 import { TagsInput } from "react-tag-input-component"
 import Select from "./Select"
-import FileUpload from "./FileUpload"
+import FileUpload from "./file-upload"
 import { IIconFormData } from "@/utils/types"
 
 interface IconUploadFormProps {

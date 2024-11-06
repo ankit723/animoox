@@ -1,8 +1,8 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import IconUploadForm from "@/components/IconUploadForm"
-import HeadingInfo from "@/components/HeadingInfo"
+import IconUploadForm from "@/components/icon-upload-form"
+import HeadingInfo from "@/components/heading-info"
 import type { IIconFormData } from "@/utils/types"
 import { fileUpload } from "@/actions/s3Upload"
 import toast, { Toaster } from "react-hot-toast"

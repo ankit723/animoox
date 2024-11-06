@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { Upload } from "lucide-react"
-import DisplayFiles from "@/components/DisplayFiles"
+import DisplayFiles from "@/components/display-files"
 
 interface FileUploadProps {
   label: string
