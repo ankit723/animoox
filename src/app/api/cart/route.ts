@@ -3,9 +3,9 @@ import { db } from '@/lib/db';
 import { NextResponse } from 'next/server';
 
 export async function GET(request: Request) {
-  const userId = request.url.split('?')[1]; // Extract userId from query parameters
+  const url = new URL(request.url);
+  const userId = url.searchParams.get("userId"); 
 
-  // Get cart items for the user
   if (!userId) {
     return NextResponse.json({ error: 'User ID is required' }, { status: 400 });
   }
@@ -19,18 +19,46 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: 'User not found' }, { status: 404 });
   }
 
-  return NextResponse.json(user.cartItems);
+  if (user.cartItems.length === 0) {
+    return NextResponse.json({ message: 'Cart is empty' }, { status: 200 });
+  }
+
+  const products = await db.product.findMany({
+    where: {
+      productId: {
+        in: user.cartItems,
+      },
+    },
+  });
+
+  if (products.length === 0) {
+    return NextResponse.json({ error: 'No products found for the cart items' }, { status: 404 });
+  }
+
+  return NextResponse.json(products);
 }
+
 
 export async function POST(request: Request) {
   const { userId, productId } = await request.json();
+  console.log(userId, productId)
 
-  // Add a productId to the user's cart
   if (!userId || !productId) {
     return NextResponse.json({ error: 'User ID and Product ID are required' }, { status: 400 });
   }
 
-  const user = await db.user.update({
+  const user = await db.user.findUnique({
+    where: { id: userId },
+  });
+  if (!user) {
+    return NextResponse.json({ error: 'User not found' }, { status: 404 });
+  }
+
+  if (user.cartItems.includes(productId)) {
+    return NextResponse.json({ error: 'Product is already in the cart' }, { status: 400 });
+  }
+
+  const updatedUser = await db.user.update({
     where: { id: userId },
     data: {
       cartItems: {
@@ -39,7 +67,7 @@ export async function POST(request: Request) {
     },
   });
 
-  return NextResponse.json(user);
+  return NextResponse.json(updatedUser);
 }
 
 export async function DELETE(request: Request) {
@@ -63,5 +91,13 @@ export async function DELETE(request: Request) {
     },
   });
 
-  return NextResponse.json(user);
+  const products = await db.product.findMany({
+    where: {
+      productId: {
+        in: user?.cartItems,
+      },
+    },
+  });
+
+  return NextResponse.json(products);
 }

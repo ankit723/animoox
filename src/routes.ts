@@ -12,7 +12,8 @@ export const publicRoutes = [
     "^/products-preview/.*",
     "/cart",
     "/api/product",
-    "/api/cart"
+    "/api/cart",
+    "/api/cart/bulk"
 ];
 
 export const publicRoutePatterns = [

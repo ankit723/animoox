@@ -71,7 +71,7 @@ export const NewPasswordForm = () => {
                                             disabled={isPending}
                                             placeholder="******"
                                             type="password"
-                                            className="w-full px-4 py-7 placeholder-neutral-300 rounded-md focus:outline-brand border-2 text-lg font-medium  border-brand text-brand"
+                                            className="w-full px-4 py-6 placeholder-neutral-300 rounded-md focus:outline-brand border-2 text-md font-medium  border-brand text-brand"
                                         />
                                     </FormControl>
                                     <FormMessage className="w-full text-left" />
@@ -84,7 +84,7 @@ export const NewPasswordForm = () => {
                     <Button
                         disabled={isPending}
                         type="submit"
-                        className="w-full bg-brand text-lg py-6 font-bold hover:bg-blue-800"
+                        className="w-full bg-brand text-md py-6 font-bold hover:bg-blue-800"
                     >
                         Reset password
                     </Button>

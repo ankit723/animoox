@@ -76,7 +76,7 @@ export const LoginForm = () => {
             <Form {...form}>
                 <form
                     onSubmit={form.handleSubmit(onSubmit)}
-                    className="bg-white rounded-[20px] p-12 space-y-9 text-center w-[430px]"
+                    className="bg-white rounded-[20px] p-12 space-y-9 text-center w-[470px]"
                 >
                     <h3 className="text-3xl font-medium">Log in to your account</h3>
                     <div className="space-y-9">
@@ -92,7 +92,7 @@ export const LoginForm = () => {
                                                 {...field}
                                                 disabled={isPending}
                                                 placeholder="123456"
-                                                className="w-full px-4 py-7 placeholder-neutral-300 rounded-md focus:outline-brand border-2 text-lg font-medium  border-brand text-brand"
+                                                className="w-full px-4 py-6 placeholder-neutral-300 rounded-md focus:outline-brand border-2 text-md font-medium  border-brand text-brand"
 
                                             />
                                         </FormControl>
@@ -115,7 +115,7 @@ export const LoginForm = () => {
                                                     disabled={isPending}
                                                     placeholder="john.doe@example.com"
                                                     type="email"
-                                                    className="w-full px-4 py-7 placeholder-neutral-200 rounded-md focus:outline-brand border-2 text-lg font-medium  border-brand text-brand"
+                                                    className="w-full px-4 py-6 placeholder-neutral-200 rounded-md focus:outline-brand border-2 text-md font-medium  border-brand text-brand"
                                                 />
                                             </FormControl>
                                             <FormMessage className="w-full text-left"/>
@@ -134,7 +134,7 @@ export const LoginForm = () => {
                                                     disabled={isPending}
                                                     placeholder="password"
                                                     type='password'
-                                                    className="w-full px-4 py-7 placeholder-neutral-200 rounded-md focus:outline-brand border-2 text-lg font-medium  border-brand text-brand"
+                                                    className="w-full px-4 py-6 placeholder-neutral-200 rounded-md focus:outline-brand border-2 text-md font-medium  border-brand text-brand"
                                                 />
                                             </FormControl>
                                             <FormMessage className="w-full text-left" />
@@ -153,7 +153,7 @@ export const LoginForm = () => {
                     <Button
                         disabled={isPending}
                         type="submit"
-                        className="w-full bg-brand text-lg py-6 font-medium hover:bg-blue-800 text-white"
+                        className="w-full bg-brand text-md py-6 font-medium hover:bg-blue-800 text-white"
                     >
                         {showTwoFactor ? "Confirm" : "Log in"}
                     </Button>

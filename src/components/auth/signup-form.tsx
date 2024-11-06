@@ -70,7 +70,7 @@ export const SignUpForm = () => {
                 <Form {...form}>
                 <form
                     onSubmit={form.handleSubmit(onSubmit)}
-                    className="bg-white rounded-[20px] p-12 space-y-9 text-center w-[430px]"
+                    className="bg-white rounded-[20px] p-12 space-y-9 text-center w-[470px]"
                 >
                     <h3 className="text-3xl font-medium">Create new account</h3>
                     <div className="space-y-9">
@@ -85,7 +85,7 @@ export const SignUpForm = () => {
                                             {...field}
                                             disabled={isPending}
                                             placeholder="John Doe"
-                                            className="w-full px-4 py-7 placeholder-neutral-200 rounded-md focus:outline-brand border-2 text-lg font-medium  border-brand text-brand"
+                                            className="w-full px-4 py-6 placeholder-neutral-200 rounded-md focus:outline-brand border-2 text-md font-medium  border-brand text-brand"
                                         />
                                     </FormControl>
                                     <FormMessage className="w-full text-left" />
@@ -104,7 +104,7 @@ export const SignUpForm = () => {
                                             disabled={isPending}
                                             placeholder="john.doe@example.com"
                                             type="email"
-                                            className="w-full px-4 py-7 placeholder-neutral-200 rounded-md focus:outline-brand border-2 text-lg font-medium  border-brand text-brand"
+                                            className="w-full px-4 py-6 placeholder-neutral-200 rounded-md focus:outline-brand border-2 text-md font-medium  border-brand text-brand"
                                         />
                                     </FormControl>
                                     <FormMessage className="w-full text-left" />
@@ -123,7 +123,7 @@ export const SignUpForm = () => {
                                             disabled={isPending}
                                             placeholder="password"
                                             type="password"
-                                            className="w-full px-4 py-7 placeholder-neutral-200 rounded-md focus:outline-brand border-2 text-lg font-medium  border-brand text-brand"
+                                            className="w-full px-4 py-6 placeholder-neutral-200 rounded-md focus:outline-brand border-2 text-md font-medium  border-brand text-brand"
                                         />
                                     </FormControl>
                                     <FormMessage className="w-full text-left" />
@@ -136,7 +136,7 @@ export const SignUpForm = () => {
                     <Button
                         disabled={isPending}
                         type="submit"
-                        className="w-full bg-brand text-lg py-6 font-medium text-white hover:bg-blue-800"
+                        className="w-full bg-brand text-md py-6 font-medium text-white hover:bg-blue-800"
                     >
                         Sign up
                     </Button>

@@ -25,7 +25,7 @@ model User {
   isTwoFactorEnabled    Boolean                @default(false)
   twoFactorConfirmation TwoFactorConfirmation?
   UserSubscription      UserSubscription?
-  cartItems     String[]  @db.ObjectId 
+  cartItems     String[]
   subscriptionId   String?
   subscriptionStatus String?
   subscriptionExpiry DateTime?

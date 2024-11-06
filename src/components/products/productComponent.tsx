@@ -5,8 +5,9 @@ import { ViewIcon } from '@/assets/icons/view-icon';
 import { ShopIcon } from '@/assets/icons/shop-icon';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { CrossIcon } from '@/assets/icons/cross-icon';
 
-const ProductComponent = ({ price, tag, category, title, description, animationCount, buttonText, productId, addToSessionCart }:any) => {
+const ProductComponent = ({ price, tag, category, title, description, animationCount, buttonText, productId, addProductToCart, isCartItem=false, removeProductFromCart }:any) => {
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -30,12 +31,22 @@ const ProductComponent = ({ price, tag, category, title, description, animationC
           {hovered && (
             <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center gap-4 text-lg">
               {/* Replace these with your specific SVGs or icons */}
-              <Link href={`/products-preview/${productId}`}>
-                <ViewIcon />
-              </Link>
-              <div className="" onClick={()=>addToSessionCart(productId)}>
-                <ShopIcon />
-              </div>
+              {!isCartItem?(
+                <>
+                  <Link href={`/products-preview/${productId}`}>
+                    <ViewIcon />
+                  </Link>
+                  <div className="" onClick={()=>addProductToCart(productId)}>
+                    <ShopIcon />
+                  </div>
+                </>
+              ):(
+                <>
+                  <div className="" onClick={()=>removeProductFromCart(productId)}>
+                    <CrossIcon />
+                  </div>
+                </>
+              )}
             </div>
           )}
         </div>
