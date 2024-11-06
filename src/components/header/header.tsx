@@ -10,6 +10,7 @@ import { useSession, signOut } from "next-auth/react";
 import { DribbleIcon } from "@/assets/icons";
 import { ProfileIcon } from "@/assets/icons/profile-icon";
 import Link from "next/link";
+import { HeaderDropdownIcon } from "@/assets/icons/header-dropdown-icon";
 
 export const Header = (): JSX.Element => {
   const { data: session } = useSession();
@@ -19,7 +20,9 @@ export const Header = (): JSX.Element => {
 
   return (
     <header className="relative px-28 py-5 flex justify-center items-center gap-12">
-      <Image alt="Logo" src={Logo} width={200} />
+      <Link href={"/"}>
+        <Image alt="Logo" src={Logo} width={200} />
+      </Link>
 
       <div className="flex justify-between flex-1">
         <span className="flex gap-4">
@@ -46,11 +49,12 @@ export const Header = (): JSX.Element => {
                 className="rounded-full py-1 px-1 pr-2 border-brand font-normal flex justify-start items-center gap-2"
                 size="lg"
                 variant="ghost"
-                onMouseEnter={()=>setShowAuthMenu(true)}
-                onMouseLeave={()=>setShowAuthMenu(false)}
               >
                 <ProfileIcon />
                 <p className="text-brand">{session.user.name}</p>
+                <div className="" onClick={()=>setShowAuthMenu(p=>!p)}>
+                  <HeaderDropdownIcon />
+                </div>
               </Button>
           ) : (
             <Button
@@ -66,8 +70,6 @@ export const Header = (): JSX.Element => {
       {showProductMenu ? (
         <section
           className="absolute flex gap-12 bg-bg p-6 rounded-xl shadow-2xl border translate-y-52 -translate-x-6 tra w-fit z-20"
-          onMouseEnter={() => setShowProductMenu(true)}
-          onMouseLeave={() => setShowProductMenu(false)}
         >
           {productsSubMenu.cards.map(({ title, details }) => (
             <article className="p-5 bg-white rounded-lg space-y-2" key={title}>
