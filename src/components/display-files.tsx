@@ -20,6 +20,7 @@ const DisplayFiles = ({ files, setFiles }: DisplayFilesProps) => {
         >
           <p className="text-xs">{file.name}</p>
           <button
+            title="Remove file"
             onClick={() => {
               setFiles(files.filter((_, i) => i !== index))
             }}

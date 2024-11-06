@@ -11,7 +11,7 @@ import footerAnimation from '@/assets/animations/footer-animation.json'
 export const Footer = (): JSX.Element => {
   return (
     <footer className="text-white">
-      <section className="flex justify-between px-24">
+      <section className="flex justify-between px-24 pb-28">
         <article className="bg-brand p-16 rounded-4.5xl space-y-4 h-fit translate-y-[110%]">
           <h1>Let{"’"}s get started.</h1>
           <p>

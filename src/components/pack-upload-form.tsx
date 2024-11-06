@@ -3,11 +3,11 @@
 import { TagsInput } from "react-tag-input-component"
 import Select from "./Select"
 import Input from "./Input"
-import InputArea from "./InputArea"
-import FileUpload from "./FileUpload"
-import KeyFeatures from "./KeyFeatures"
-import DisplayFiles from "./DisplayFiles"
-import CompatibilityIcons from "./CompatibilityIcons"
+import InputArea from "./input-area"
+import FileUpload from "./file-upload"
+import KeyFeatures from "./key-features"
+import DisplayFiles from "./display-files"
+import CompatibilityIcons from "./compatibility-icons"
 import { IPackFormData, IPackFiles } from "@/utils/types"
 
 interface IconUploadFormProps {

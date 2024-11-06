@@ -50,6 +50,7 @@ const KeyFeatures = ({ keyFeatures, setKeyFeatures }: KeyFeaturesProps) => {
               placeholder="Feature"
             />
             <button
+              title="Remove feature"
               onClick={() => handleRemoveFeature(index)}
               className="absolute right-4"
             >
