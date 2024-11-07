@@ -231,8 +231,8 @@ export default function Page(): JSX.Element {
       </section>
 
       <section className="bg-white w-full relative flex flex-col items-center my-28 pt-10 h-[50rem]">
-        <Image src={ProductivityLeft} alt="" className="w-[21rem] absolute left-0 top-24"/>
-        <Image src={ProductivityRight} alt="" className="w-[21rem] absolute right-0 top-24"/>
+        <Image src={ProductivityLeft} alt="" className="w-[21rem] absolute left-0 top-24 z-20"/>
+        <Image src={ProductivityRight} alt="" className="w-[21rem] absolute right-0 top-24 z-20"/>
         <div className="absolute left-80 bottom-0"><ProductivityLeftIcon /></div>
         <div className="absolute top-20 right-0"><ProductivityTopRightIcon /></div>
         <div className="absolute bottom-1 right-80"><ProductivityBottomRightIcon /></div>
