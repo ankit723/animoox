@@ -2,15 +2,27 @@
 import { useState, useEffect, useRef, useCallback } from "react"
 import { Input, Button } from "@/components/ui"
 import { HeaderDropdownIcon } from "@/assets/icons/header-dropdown-icon"
-import { SearchIcon } from "@/assets/icons"
+import { ProductivityBottomRightIcon, ProductivityLeftIcon, ProductivityTopRightIcon, SearchIcon } from "@/assets/icons"
 import { HomePageAnimation } from "@/components/home-page-animation"
 import ProductComponent from "@/components/products/productComponent"
 import SkeletonPlaceholder from "@/components/skeleton-placeholder"
 import { addToCart } from "@/lib/cart-utils"
 import { toast } from "sonner"
 import { useSession } from "next-auth/react"
-import { PaddleLogo } from "@/assets/images"
+import { PaddleLogo, ProductivityLeft, ProductivityRight } from "@/assets/images"
 import Image from "next/image"
+import { Etablir, Goddady, Ibm, KickBoost, LottieFiles, Perigon, Plume, Socrates, Sturdy, Synopsys, Syntrum, TripleWhale, ProductivityLogo } from "@/assets/images"
+import { ProductivityStar } from "@/assets/icons/productivity-star"
+import { ProductivityRect } from "@/assets/icons/productivity-rect"
+import { ProductivityOval } from "@/assets/icons/productivity-oval"
+import { FaqIcon } from "@/assets/icons/faq-icon"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+
 
 const productTypes=[
   "Animation",
@@ -19,6 +31,21 @@ const productTypes=[
   "Isometric",
   "Flat",
   "Iconic",
+]
+
+const ourPartners=[
+  Goddady, 
+  Synopsys, 
+  Perigon, 
+  KickBoost, 
+  Ibm, 
+  LottieFiles, 
+  Syntrum, 
+  Plume, 
+  Etablir, 
+  TripleWhale,
+  Socrates, 
+  Sturdy, 
 ]
 
 export default function Page(): JSX.Element {
@@ -177,6 +204,104 @@ export default function Page(): JSX.Element {
           <h2 className="text-center mt-20">What our clients say about us</h2>
           <p className="text-center text-md font-extralight text-secondary-text w-[40rem]">We always consider our clients as part of us, where we will always be there for them and grow with their products.</p>
         </div>
+        
+        <div className="w-full flex flex-col justify-center items-center">
+          <h2 className="text-center my-16">Our High Level Partners</h2>
+          
+          <div className="flex gap-20 items-center">
+            {ourPartners.slice(0, 5).map((p)=>(
+              <Image src={p} alt="" className="w-32"/>
+            ))}
+          </div>
+
+          <div className="flex gap-16 my-5 items-center">
+            {ourPartners.slice(5, 9).map((p)=>(
+              <Image src={p} alt="" className="w-40"/>
+            ))}
+          </div>
+
+          <div className="flex gap-16 my-5 items-center">
+            {ourPartners.slice(9, 12).map((p)=>(
+              <Image src={p} alt=""/>
+            ))}
+          </div>
+        </div>
+
+
+      </section>
+
+      <section className="bg-white w-full relative flex flex-col items-center my-28 pt-10 h-[50rem]">
+        <Image src={ProductivityLeft} alt="" className="w-[21rem] absolute left-0 top-24"/>
+        <Image src={ProductivityRight} alt="" className="w-[21rem] absolute right-0 top-24"/>
+        <div className="absolute left-80 bottom-0"><ProductivityLeftIcon /></div>
+        <div className="absolute top-20 right-0"><ProductivityTopRightIcon /></div>
+        <div className="absolute bottom-1 right-80"><ProductivityBottomRightIcon /></div>
+
+        <h1 className="">Boost your productivity, effortlessly.</h1>
+        <h4 className="text-md font-extralight text-secondary-text">Unlock everything: Get instant access, daily updates, and stream your workflow.</h4>
+        <Button className="bg-brand hover:bg-white hover:text-brand hover:border-brand text-white rounded-full py-4 px-5 my-10" variant="ghost">Unlock All-Access</Button>
+        <div className="flex gap-5 items-center">
+          <Image src={ProductivityLogo} alt="" className="w-36"/>
+          <p className="font-extralight text-secondary-text"> <b className="font-bold text-black">1000+</b> People use animoox daily.</p>
+        </div>
+        <div className="w-full mt-20 px-[30rem] relative ">
+          <div className="relative bg-red-100">
+            <div className="absolute w-80 left-0 top-0"><ProductivityStar /></div>
+            <div className="absolute w-80 top-0 left-40"><ProductivityRect /></div>
+            <div className="absolute w-80 right-0 "><ProductivityOval /></div>
+          </div>
+        </div>
+      </section>
+
+      <section className="w-full">
+          <div className="flex justify-center items-center">
+            <FaqIcon />
+          </div>
+
+          <div className=" w-full grid grid-cols-2 px-20 py-28 gap-36">
+            <div className="w-full h-full p-10">
+              <div className="w-full bg-secondary rounded h-full"></div>
+            </div>
+            <div className="w-full">
+              <Accordion type="single" collapsible className="w-full">
+                <AccordionItem value="item-1" className="border-brand border-t-brand border-l-brand border-r-brand" >
+                  <AccordionTrigger className="font-extralight text-md"> <p className="text-md font-extralight"> What type of digital assets do you offer?</p> </AccordionTrigger>
+                  <AccordionContent className="text-sm text-secondary-text font-extralight">
+                    We provide a wide range of digital assets, including illustrations, icons, Lottie animations, and various design elements.
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="item-2" className="border-brand border-t-brand border-l-brand border-r-brand">
+                  <AccordionTrigger className="font-extralight text-md">How many assets are available for download? </AccordionTrigger>
+                  <AccordionContent className="text-sm text-secondary-text font-extralight">
+                    We provide a wide range of digital assets, including illustrations, icons, Lottie animations, and various design elements.
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="item-3" className="border-brand border-t-brand border-l-brand border-r-brand">
+                  <AccordionTrigger className="font-extralight text-md">Are the assets customizable? </AccordionTrigger>
+                  <AccordionContent className="text-sm text-secondary-text font-extralight">
+                    We provide a wide range of digital assets, including illustrations, icons, Lottie animations, and various design elements.
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="item-4" className="border-brand border-t-brand border-l-brand border-r-brand">
+                  <AccordionTrigger className="font-extralight text-md">How do I download the assets? </AccordionTrigger>
+                  <AccordionContent className="text-sm text-secondary-text font-extralight">
+                    We provide a wide range of digital assets, including illustrations, icons, Lottie animations, and various design elements.
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="item-5" className="border-brand border-t-brand border-l-brand border-r-brand">
+                  <AccordionTrigger className="font-extralight text-md">Can I use these assets for commercial projects? </AccordionTrigger>
+                  <AccordionContent className="text-sm text-secondary-text font-extralight">
+                    We provide a wide range of digital assets, including illustrations, icons, Lottie animations, and various design elements.
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            </div>
+
+          </div>
       </section>
     </main>
   )
