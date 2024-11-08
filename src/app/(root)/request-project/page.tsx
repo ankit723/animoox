@@ -6,15 +6,15 @@ export default function InquiryForm() {
     const [selectedProject, setSelectedProject] = useState('Illustration');
     const [selectedBudget, setSelectedBudget] = useState('2000-5000 USD');
 
-    const handleProjectChange = (project) => {
+    const handleProjectChange = (project:any) => {
         setSelectedProject(project);
     };
 
-    const handleBudgetChange = (budget) => {
+    const handleBudgetChange = (budget:any) => {
         setSelectedBudget(budget);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e:any) => {
         e.preventDefault();
         // Handle form submission logic here
     };
@@ -43,7 +43,7 @@ export default function InquiryForm() {
             <div className="bg-white rounded-lg shadow-md p-8 w-full md:w-2/3">
                 <h2 className="text-3xl font-semibold mb-2">Let's build an awesome project together.</h2>
                 <p className="text-gray-600 mb-8">
-                    Describe your project and leave us your contact info, we’ll get back to you within 24 hours.
+                    Describe your project and leave us your contact info, we&apos;ll get back to you within 24 hours.
                 </p>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -103,7 +103,7 @@ export default function InquiryForm() {
                     <textarea
                         name="message"
                         placeholder="Your Message"
-                        rows="4"
+                        rows={4}
                         className="w-full border border-blue-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     ></textarea>
 
