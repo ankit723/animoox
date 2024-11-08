@@ -28,7 +28,7 @@ export default function Page() {
             </p>
 
             <div className="flex bg-gray-100 p-8 my-10">
-                <div className="flex flex-col space-y-4 bg-white p-6 rounded-3xl shadow-md w-1/3 max-w-xs">
+                <div className="flex flex-col space-y-4 bg-white p-6 rounded-3xl shadow-md w-1/3 max-w-xs h-fit">
                     <Button 
                         onClick={() => setSelectedTab("profile")} 
                         className={`py-3 px-6 text-brand font-extralight rounded-full border-brand 
