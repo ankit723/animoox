@@ -209,20 +209,20 @@ export default function Page(): JSX.Element {
           <h2 className="text-center my-16">Our High Level Partners</h2>
           
           <div className="flex gap-20 items-center">
-            {ourPartners.slice(0, 5).map((p)=>(
-              <Image src={p} alt="" className="w-32"/>
+            {ourPartners.slice(0, 5).map((p, index)=>(
+              <Image src={p} alt="" className="w-32" key={index}/>
             ))}
           </div>
 
           <div className="flex gap-16 my-5 items-center">
-            {ourPartners.slice(5, 9).map((p)=>(
-              <Image src={p} alt="" className="w-40"/>
+            {ourPartners.slice(5, 9).map((p, index)=>(
+              <Image src={p} alt="" className="w-40" key={index}/>
             ))}
           </div>
 
           <div className="flex gap-16 my-5 items-center">
-            {ourPartners.slice(9, 12).map((p)=>(
-              <Image src={p} alt=""/>
+            {ourPartners.slice(9, 12).map((p, index)=>(
+              <Image src={p} alt="" key={index}/>
             ))}
           </div>
         </div>
