@@ -49,6 +49,7 @@ export const Header = (): JSX.Element => {
                 className="rounded-full py-1 px-1 pr-2 border-brand font-normal flex justify-start items-center gap-2"
                 size="lg"
                 variant="ghost"
+                onClick={()=>setShowAuthMenu(p=>!p)}
               >
                 <ProfileIcon />
                 <p className="text-brand">{session.user.name}</p>
@@ -70,6 +71,8 @@ export const Header = (): JSX.Element => {
       {showProductMenu ? (
         <section
           className="absolute flex gap-12 bg-bg p-6 rounded-xl shadow-2xl border translate-y-52 -translate-x-6 tra w-fit z-20"
+          onMouseEnter={() => setShowProductMenu(true)}
+          onMouseLeave={() => setShowProductMenu(false)}
         >
           {productsSubMenu.cards.map(({ title, details }) => (
             <article className="p-5 bg-white rounded-lg space-y-2" key={title}>
@@ -92,15 +95,11 @@ export const Header = (): JSX.Element => {
 
       {showAuthMenu ? (
         <section
-          className="absolute flex flex-col gap-3 py-3 bg-bg p-6 shadow-2xl right-0 border translate-y-36 -translate-x-6 tra w-fit z-20 border-brand"
-          onMouseEnter={() => setShowAuthMenu(true)}
-          onMouseLeave={() => setShowAuthMenu(false)}
-        >
-          <p className="font-extralight text-brand hover:text-brand cursor-pointer">Profile</p>
+          className="absolute flex flex-col gap-3 py-3 bg-bg p-6 shadow-2xl right-0 border translate-y-36 -translate-x-6 tra w-fit z-20 border-brand">
+          <Link className="font-extralight text-brand hover:text-brand cursor-pointer" href="/profile">Profile</Link>
           <p className="font-extralight text-secondary-text hover:text-brand cursor-pointer">Purchased</p>
           <p className="font-extralight text-secondary-text hover:text-brand cursor-pointer">My Current Plan</p>
-          <p className="font-extralight text-secondary-text hover:text-brand cursor-pointer">Account Settings</p>
-          <p className="font-extralight text-secondary-text hover:text-brand cursor-pointer">Profile</p>
+          <Link className="font-extralight text-secondary-text hover:text-brand cursor-pointer" href="/profile/account-settings">Account Settings</Link>
           <hr />
           <p className="font-extralight text-secondary-text hover:text-brand cursor-pointer" onClick={()=>signOut()}>Logout</p>
         </section>

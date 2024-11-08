@@ -41,7 +41,7 @@ export default function InquiryForm() {
 
             {/* Project Inquiry Form Section */}
             <div className="bg-white rounded-lg shadow-md p-8 w-full md:w-2/3">
-                <h2 className="text-3xl font-semibold mb-2">Let's build an awesome project together.</h2>
+                <h2 className="text-3xl font-semibold mb-2">Let&apos;s build an awesome project together.</h2>
                 <p className="text-gray-600 mb-8">
                     Describe your project and leave us your contact info, we&apos;ll get back to you within 24 hours.
                 </p>
